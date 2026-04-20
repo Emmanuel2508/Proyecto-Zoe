@@ -19,4 +19,8 @@ class Producto extends Model
     public function detalleCarrito(){
         return $this->hasMany(DetalleCarrito::class);
     }
+
+    public function detallePedido(){
+        return $this->hasMany(DetallePedido::class);
+    }
 }
