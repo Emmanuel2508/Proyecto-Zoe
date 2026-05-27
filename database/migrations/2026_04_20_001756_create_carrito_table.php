@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('carrito', function (Blueprint $table) {
-            $table->id("ID_Carrito");
-            $table->foreignId('ID_Cliente')->constrained('clientes', 'ID_Cliente')->onDelete('cascade');
-            $table->decimal('Subtotal', 10, 2);
-            $table->timestamp('Fecha_Compra');
-            $table->string('Status')->default('Pendiente');               
+            $table->id("id_carrito");
+            $table->foreignId('id_cliente')->constrained('clientes', 'id_cliente')->onDelete('cascade');
+            $table->decimal('subtotal', 10, 2);
+            $table->timestamp('fecha_Compra');
+            $table->string('status')->default('pendiente');               
         });
     }
 

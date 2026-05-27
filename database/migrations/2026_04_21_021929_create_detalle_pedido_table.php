@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('detalle_pedido', function (Blueprint $table) {
-            $table->id("ID_Detalle_Pedido");
-            $table->foreignId("ID_Pedido")->constrained("pedidos", "ID_Pedido")->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignId("ID_Productos")->constrained("productos", "ID_Productos")->cascadeOnDelete()->cascadeOnUpdate();
-            $table->integer("Cantidad");
-            $table->decimal("Subtotal", 10, 2);
+            $table->id("id_detalle_Pedido");
+            $table->foreignId("id_pedido")->constrained("pedidos", "id_pedido")->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId("id_productos")->constrained("productos", "id_productos")->cascadeOnDelete()->cascadeOnUpdate();
+            $table->integer("cantidad");
+            $table->decimal("subtotal", 10, 2);
             $table->timestamps();
         });
     }

@@ -9,11 +9,11 @@ class Producto extends Model
     protected $table = 'productos';
 
     protected $fillable = [
-        'ID_Productos',
-        'Nombre',
-        'Categoria',
-        'Precio',
-        'Stock'
+        'id_productos',
+        'nombre',
+        'categoria',
+        'precio',
+        'stock'
     ];
 
     public function detalleCarrito(){

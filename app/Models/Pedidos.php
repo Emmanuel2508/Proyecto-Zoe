@@ -10,16 +10,16 @@ class Pedidos extends Model
 
     protected $fillable = 
     [
-        "ID_Pedido",
-        "ID_Carrito",
-        "Fecha_Compra",
-        "Total",
-        "Status"
+        "id_pedido",
+        "id_carrito",
+        "fecha_compra",
+        "total",
+        "status"
     ];
 
     public function carrito()
     {
-        return $this->belongsTo(Carrito::class, "ID_Carrito");
+        return $this->belongsTo(Carrito::class, "id_carrito");
     }
 
     public function detalle_pedido()

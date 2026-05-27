@@ -9,14 +9,14 @@ class DetallePedido extends Model
     protected $table = "detalle_pedido";
 
     protected $fillable = [
-        "ID_Detalle_Pedido", "ID_Pedido", "ID_Productos", "Cantidad", "Subtotal"
+        "id_detalle_Pedido", "id_pedido", "id_productos", "cantidad", "subtotal"
     ];
 
     public function pedido(){
-        return $this->belongsTo(Pedidos::class, "ID_Pedido");
+        return $this->belongsTo(Pedidos::class, "id_pedido");
     }
 
     public function producto(){
-        return $this->belongsTo(Producto::class, "ID_Productos");
+        return $this->belongsTo(Producto::class, "id_productos");
     }
 }

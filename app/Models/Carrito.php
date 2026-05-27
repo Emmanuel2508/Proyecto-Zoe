@@ -8,14 +8,14 @@ class carrito extends Model
 {
     protected $table='carrito';
     protected $fillable=[
-        'ID_Carrito', 
-        'ID_Cliente',
-        'Subtotal',
-        'Fecha_Compra',
-        'Status'
+        'id_carrito', 
+        'id_cliente',
+        'subtotal',
+        'fecha_compra',
+        'status'
   ];
     public function clientes(){
-        return $this->belongsTo(Clientes::class, 'ID_Cliente');
+        return $this->belongsTo(Clientes::class, 'id_cliente');
     }
     public function detalles_carrito(){
         return $this->hasMany(DetalleCarrito::class);

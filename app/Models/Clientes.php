@@ -8,12 +8,12 @@ class Clientes extends Model
 {
     protected $table = 'clientes';
     protected $fillable = [
-        'ID_Cliente',
-        'Nombre',
-        'Apellido',
-        'Direccion',
-        'Email',
-        'Telefono'
+        'id_cliente',
+        'nombre',
+        'apellido',
+        'direccion',
+        'email',
+        'telefono'
     ];
     public function Carrito(){
         return $this->hasMany(Carrito::class);
