@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('detalle_pedido', function (Blueprint $table) {
             $table->id("ID_Detalle_Pedido");
-            $table->foreignId("ID_Pedido")->constrained("pedidos")->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignId("ID_Productos")->constrained("productos")->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId("ID_Pedido")->constrained("pedidos", "ID_Pedido")->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId("ID_Productos")->constrained("productos", "ID_Productos")->cascadeOnDelete()->cascadeOnUpdate();
             $table->integer("Cantidad");
             $table->decimal("Subtotal", 10, 2);
             $table->timestamps();

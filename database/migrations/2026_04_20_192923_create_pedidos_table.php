@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id("ID_Pedido");
-            $table->foreignId("ID_Carrito")->constrained("carrito")->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId("ID_Carrito")->constrained("carrito", "ID_Carrito")->cascadeOnUpdate()->cascadeOnDelete();
             $table->date("Fecha_Compra");
             $table->decimal("Total", 10, 2);
             $table->string("Status")->default("Pendiente");
