@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\ProductosController;
 use Illuminate\Support\Facades\Route;
@@ -23,3 +24,5 @@ route::get('/productos/{producto}/imagen', [ProductosController::class, 'mostrar
 route::get('/productos/{producto}/modificar', [ProductosController:: class, 'modificar']);
 route::put('/productos/{producto}', [ProductosController:: class, 'actualizar']);
 route::delete('/productos/{producto}', [ProductosController:: class, 'eliminar']);
+
+route::get('/productos/{producto}/agregar', [CarritoController:: class, 'agregar']);

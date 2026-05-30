@@ -12,5 +12,10 @@
         <button type="submit" onclick="return confirm('Seguro que desea eliminar este producto?')"
         class="border-2">Eliminar Producto</button>
 
-    </form> 
+    </form>
+    <form action="/productos/{{$producto->id_productos}}/agregar">
+
+
+        <button type="submit" class="border-2">Agregar al carrito</button>
+    </form>    
 </x-plantilla>
