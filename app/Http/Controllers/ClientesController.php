@@ -9,11 +9,11 @@ class ClientesController extends Controller
 {
     public function clientes(){
         $clientes = Clientes::all();
-        return view('clientes', compact('clientes'));
+        return view('Clientes.clientes', compact('clientes'));
     }
 
     public function registro(){
-        return view('clientesregistro');
+        return view('Clientes.clientesregistro');
     }
     
     public function guardar(Request $request){
@@ -31,12 +31,12 @@ class ClientesController extends Controller
 
     public function mostrar($cliente){
         $cliente = Clientes::find($cliente);
-        return view('cliente', compact('cliente'));
+        return view('Clientes.cliente', compact('cliente'));
     }
 
     public function modificar($cliente){
         $cliente = Clientes::find($cliente);
-        return view('clientemodificar', compact('cliente'));
+        return view('Clientes.clientemodificar', compact('cliente'));
     }
 
     public function actualizar(Request $request, $cliente){
@@ -55,6 +55,6 @@ class ClientesController extends Controller
     public function eliminar($cliente){
         $cliente = Clientes::find($cliente);
         $cliente->delete();
-        return "Aqui se redirigira al listado de clientes";
+        return redirect('/clientes');
     }
 }
