@@ -20,7 +20,7 @@
         <input type="number" name="telefono" id="telefono" required value="{{$cliente->telefono}}"
         class="border-1">
         Contraseña:
-        <input type="text" name="contraseña" id="contraseña" required value="{{$cliente->contraseña}}"
+        <input type="text" name="contraseña" id="contraseña" required
         class="border-1">
         <button type="submit" class="border-2">Modificar perfil</button>
     </form>
