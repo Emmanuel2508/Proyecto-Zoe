@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Clientes;
 use Illuminate\Http\Request;
+use illuminate\Support\Facades\Hash;
 
 class ClientesController extends Controller
 {
@@ -24,7 +25,7 @@ class ClientesController extends Controller
         $guardar->direccion = $request->direccion;
         $guardar->email = $request->email;
         $guardar->telefono = $request->telefono;
-        $guardar->contraseña = $request->contraseña;
+        $guardar->contraseña = Hash::make($request->contraseña);
         $guardar->save();
         return redirect('/clientes');
     }
@@ -47,7 +48,7 @@ class ClientesController extends Controller
         $cliente->direccion = $request->direccion;
         $cliente->email = $request->email;
         $cliente->telefono = $request->telefono;
-        $cliente->contraseña = $request->contraseña;
+        $cliente->contraseña = Hash::make($request->contraseña);
         $cliente->save();
         return redirect('/clientes/' .$cliente->id_cliente);
     }
