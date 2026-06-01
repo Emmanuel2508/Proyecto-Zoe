@@ -15,7 +15,15 @@
 
         </form>
     @else
-        <form action="/productos/{{$producto->id_productos}}/agregar">
+        <form action="{{ route('carrito.agregar') }}" method="post">
+            @csrf
+            @method('POST')
+
+            <input type="hidden" name="id_productos" value="{{ $producto->id_productos }}">
+
+            <label for="cantidad">Cantidad</label>
+            <input type="number" name="cantidad" id="cantidad" value="1" min="1" max="1000">
+
             <button type="submit" class="border-2">Agregar al carrito</button>
         </form>
     @endif

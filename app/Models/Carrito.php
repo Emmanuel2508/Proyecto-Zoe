@@ -4,11 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class carrito extends Model
+class Carrito extends Model
 {
     protected $table='carrito';
+
+    protected $primaryKey = 'id_carrito';
+
+    public $timestamps = false;
+
     protected $fillable=[
-        'id_carrito', 
         'id_cliente',
         'subtotal',
         'fecha_compra',
@@ -18,7 +22,7 @@ class carrito extends Model
         return $this->belongsTo(Clientes::class, 'id_cliente');
     }
     public function detalles_carrito(){
-        return $this->hasMany(DetalleCarrito::class);
+        return $this->hasMany(DetalleCarrito::class, 'id_carrito', 'id_carrito');
     }
     public function pedidos(){
         return $this->hasMany(Pedidos::class);
