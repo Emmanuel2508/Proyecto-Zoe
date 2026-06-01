@@ -27,7 +27,7 @@ class ClientesController extends Controller
         $guardar->telefono = $request->telefono;
         $guardar->contraseña = Hash::make($request->contraseña);
         $guardar->save();
-        return redirect('/clientes');
+        return redirect()->route('login');
     }
 
     public function mostrar($cliente){
@@ -55,9 +55,13 @@ class ClientesController extends Controller
         return redirect('/clientes/' .$cliente->id_cliente);
     }
 
-    public function eliminar($cliente){
+    public function eliminar(Request $request, $cliente){
         $cliente = Clientes::find($cliente);
         $cliente->delete();
-        return redirect('/clientes');
+
+        auth()->guard('web')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('Inicio');
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Administrador;
 use App\Models\Clientes;
 use App\Models\User;
 
@@ -44,6 +45,11 @@ return [
             'provider' => 'clientes',
         ],
 
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins'
+        ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'clientes',
@@ -72,6 +78,11 @@ return [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', Clientes::class),
         ],
+
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', Administrador::class),
+        ]
 
         // 'users' => [
         //     'driver' => 'database',
