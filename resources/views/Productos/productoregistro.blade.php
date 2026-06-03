@@ -1,6 +1,6 @@
 <x-plantilla>
     <h1>Hola mundo desde el forulario de registro de productos</h1>
-    <form action="/productos" id="registro" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('productos.guardar') }}" id="registro" method="POST" enctype="multipart/form-data">
         
         @csrf
 

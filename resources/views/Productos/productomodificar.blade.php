@@ -1,7 +1,7 @@
 <x-plantilla>
     <h1>hola mundo desde el formulario para modificar productos</h1>
 
-    <form action="/productos/{{$producto->id_productos}}" id="modificar" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('productos.actualizar', $producto->id_productos) }}" id="modificar" method="POST" enctype="multipart/form-data">
 
         @csrf
         @method('PUT')

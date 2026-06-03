@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Administrador;
+use App\Models\Clientes;
 use App\Models\User;
 
 return [
@@ -40,7 +42,17 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'clientes',
+        ],
+
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins'
+        ],
+
+        'api' => [
+            'driver' => 'token',
+            'provider' => 'clientes',
         ],
     ],
 
@@ -62,10 +74,15 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'clientes' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', User::class),
+            'model' => env('AUTH_MODEL', Clientes::class),
         ],
+
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', Administrador::class),
+        ]
 
         // 'users' => [
         //     'driver' => 'database',

@@ -1,5 +1,5 @@
 <x-plantilla>
-    <form action="/clientes" id="registro" method="POST">
+    <form action="{{ route('clientes.guardar') }}" id="registro" method="POST">
 
         @csrf
 

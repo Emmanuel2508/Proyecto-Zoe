@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Clientes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ClientesController extends Controller
 {
@@ -24,9 +25,9 @@ class ClientesController extends Controller
         $guardar->direccion = $request->direccion;
         $guardar->email = $request->email;
         $guardar->telefono = $request->telefono;
-        $guardar->contraseña = $request->contraseña;
+        $guardar->contraseña = Hash::make($request->contraseña);
         $guardar->save();
-        return redirect('/clientes');
+        return redirect()->route('login');
     }
 
     public function mostrar($cliente){
@@ -47,14 +48,20 @@ class ClientesController extends Controller
         $cliente->direccion = $request->direccion;
         $cliente->email = $request->email;
         $cliente->telefono = $request->telefono;
-        $cliente->contraseña = $request->contraseña;
+        if ($request->filled('contraseña')){
+            $cliente->contraseña = Hash::make($request->contraseña);
+        }
         $cliente->save();
         return redirect('/clientes/' .$cliente->id_cliente);
     }
 
-    public function eliminar($cliente){
+    public function eliminar(Request $request, $cliente){
         $cliente = Clientes::find($cliente);
         $cliente->delete();
-        return redirect('/clientes');
+
+        auth()->guard('web')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('Inicio');
     }
 }

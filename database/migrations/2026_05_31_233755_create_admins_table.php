@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('carrito', function (Blueprint $table) {
-            $table->id("id_carrito");
-            $table->foreignId('id_cliente')->constrained('clientes', 'id_cliente')->onDelete('cascade');
-            $table->decimal('subtotal', 10, 2);
-            $table->timestamps();
+        Schema::create('admins', function (Blueprint $table) {
+            $table->id('id_admin');
+            $table->string('email')->unique();
+            $table->string('contraseña');
         });
     }
 
@@ -24,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('carrito');
+        Schema::dropIfExists('admins');
     }
 };

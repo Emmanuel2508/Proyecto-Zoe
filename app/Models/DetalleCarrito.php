@@ -7,10 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class DetalleCarrito extends Model
 {
     protected $table='detalle_carrito';
+
+    protected $primaryKey = 'id_detalle';
+
+    public $timestamps = false;
+
     protected $fillable=[
-        'id_detalle',
         'id_carrito',
-        'id_producto',
+        'id_productos',
         'cantidad',
         'subtotal'
     ];

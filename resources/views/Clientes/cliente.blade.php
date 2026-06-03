@@ -1,5 +1,7 @@
 <x-plantilla>
     <h1 class="text-4xl">Hola mundo desde el perfil del cliente: {{$cliente->nombre}}</h1>
+    <a href="{{ route('carrito.mostrar', $cliente->id_cliente) }}">Carrito</a>
+    <a href="{{ route('pedidos.mostrar') }}">Mis Pedidos</a>
     <a href="/clientes/{{$cliente->id_cliente}}/modificar" class="border-2">Modificar Perfil</a>
     <form action="/clientes/{{$cliente->id_cliente}}" method="POST">
 
