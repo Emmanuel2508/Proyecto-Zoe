@@ -13,7 +13,6 @@ class CarritoController extends Controller
     {
         $carrito = Carrito::with('detalles_carrito.producto')
                             ->where('id_cliente', $id_cliente)
-                            ->where('status', 'pendiente')
                             ->first();
         
         return view('Carrito.carrito', compact('carrito'));
@@ -31,11 +30,9 @@ class CarritoController extends Controller
         $carrito = Carrito::firstOrCreate(
             [
                 'id_cliente' => $id_cliente,
-                'status' => 'pendiente'
             ],
             [
                 'subtotal' => 0,
-                'fecha_compra' => now()
             ]
         );
 

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.jijija
+     * Run the migrations.
      */
     public function up(): void
     {
@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id("id_carrito");
             $table->foreignId('id_cliente')->constrained('clientes', 'id_cliente')->onDelete('cascade');
             $table->decimal('subtotal', 10, 2);
-            $table->timestamp('fecha_Compra');
-            $table->string('status')->default('pendiente');               
+            $table->timestamps();
         });
     }
 

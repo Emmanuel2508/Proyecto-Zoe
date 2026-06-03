@@ -3,7 +3,9 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\PedidosController;
 use App\Http\Controllers\ProductosController;
+use App\Models\Pedidos;
 use Illuminate\Support\Facades\Route;
 
 // inicio y autenticación
@@ -21,7 +23,7 @@ Route::post('/admin/login', [AuthController::class, 'loginAdmin'])->name('loginA
 
 // registro público de clientes
 Route::get('/clientes/registro', [ClientesController::class, 'registro'])->name('clientes.registro');
-Route::post('/clientes', [ClientesController::class, 'guardar']);
+Route::post('/clientes', [ClientesController::class, 'guardar'])->name('clientes.guardar');
 
 
 // rutas protegidas para cliente
@@ -43,6 +45,11 @@ Route::middleware(['auth', 'cliente'])->group(function (){
     
     // eliminar un artículo por completo del carrito
     Route::delete('/carrito/{detalle}/eliminar', [CarritoController::class, 'eliminarDetalle'])->name('carrito.eliminarDetalle');
+
+    Route::get('/pedidos', [PedidosController::class, 'mostrarPedidos'])->name('pedidos.mostrar');
+    Route::post('/pedidos/confirmar', [PedidosController::class, 'confirmarPedido'])->name('pedidos.confirmar');
+    Route::put('/pedido/{id_pedido}/pagar', [PedidosController::class, 'pagarPedido'])->name('pedidos.pagar');
+    Route::delete('/pedido/{id_pedido}/cancelar', [PedidosController::class, 'cancelarPedido'])->name('pedidos.cancelar');
 
     // cerrar sesión cliente
     Route::post('/logout', [AuthController::class, 'logoutCliente'])->name('logout');

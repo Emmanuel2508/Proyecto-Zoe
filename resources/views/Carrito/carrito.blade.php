@@ -1,5 +1,8 @@
 <x-plantilla>
     <h1>Mi Carrito</h1>
+    @if (session('error'))
+        <span>{{ session('error') }}</span>
+    @endif
     <span>Total de compras: {{ $carrito->subtotal }}</span>
     <table>
         <thead>
@@ -48,8 +51,16 @@
                     </td>
                 </tr>
             @empty
-                <h3>El carrito está vacío</h3>
+                <tr>
+                    El carrito está vacío
+                </tr>
             @endforelse
         </tbody>
     </table>
+    <form action="{{ route('pedidos.confirmar') }}" method="post">
+        @csrf
+        <button type="submit">
+            Confirmar Pedido
+        </button>
+    </form>
 </x-plantilla>

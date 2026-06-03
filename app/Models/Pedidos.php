@@ -8,9 +8,10 @@ class Pedidos extends Model
 {
     protected $table = "pedidos";
 
+    protected $primaryKey = "id_pedido";
+
     protected $fillable = 
     [
-        "id_pedido",
         "id_carrito",
         "fecha_compra",
         "total",
@@ -24,6 +25,6 @@ class Pedidos extends Model
 
     public function detalle_pedido()
     {
-        return $this->hasMany(DetalleCarrito::class);
+        return $this->hasMany(DetallePedido::class, 'id_pedido', 'id_pedido');
     }
 }
