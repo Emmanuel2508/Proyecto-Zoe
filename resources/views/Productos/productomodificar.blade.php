@@ -1,4 +1,4 @@
-<x-plantilla>
+<x-plantilla :title="$title">
 
   <div class="min-h-[85vh] flex flex-col justify-center items-center px-4 py-8">
 

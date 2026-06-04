@@ -1,4 +1,4 @@
-<x-plantilla>
+<x-plantilla :title="$title">
     <div class="min-h-[85vh] flex flex-col justify-center items-center px-4 py-8">
         <div class="w-full max-w-2xl bg-white rounded-2xl shadow-xl shadow-purple-100/30 border border-purple-100/40 overflow-hidden">
             

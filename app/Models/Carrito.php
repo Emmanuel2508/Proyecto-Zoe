@@ -14,8 +14,7 @@ class Carrito extends Model
 
     protected $fillable=[
         'id_cliente',
-        'subtotal',
-        'fecha_compra'
+        'subtotal'
   ];
     public function clientes(){
         return $this->belongsTo(Clientes::class, 'id_cliente');

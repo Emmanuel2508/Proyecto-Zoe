@@ -1,4 +1,4 @@
-<x-plantilla>
+<x-plantilla :title="$title">
     <div class="max-w-4xl mx-auto px-4 py-12">
         
         <div class="bg-gradient-to-r from-[#fff5f8] via-[#f3e8f4] to-[#ffedf5] rounded-2xl p-8 border border-pink-100/50 shadow-sm text-center md:text-left md:flex md:items-center md:justify-between gap-6 mb-8">
