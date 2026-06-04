@@ -8,7 +8,8 @@ class AuthController extends Controller
 {
     public function loginClienteForm()
     {
-        return view('auth.login');
+        $title = 'ZOE - Inicio de sesión';
+        return view('auth.login', compact('title'));
     }
 
     public function loginCliente(Request $request)
@@ -43,7 +44,8 @@ class AuthController extends Controller
 
     public function loginAdminForm()
     {
-        return view('auth.admin-login');
+        $title = 'ZOE - Login Administrador';
+        return view('auth.admin-login', compact('title'));
     }
 
     public function loginAdmin(Request $request)

@@ -1,4 +1,4 @@
-<x-plantilla>
+<x-plantilla :title="$title">
     <div class="max-w-5xl mx-auto px-4 py-10">
         
         <!-- Encabezado de la Vista de Administrador (Sin contador) -->

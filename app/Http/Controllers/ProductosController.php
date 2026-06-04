@@ -9,11 +9,13 @@ class ProductosController extends Controller
 {
     public function productos(){
         $productos = Producto::all();
-        return view('Productos.productos', compact('productos'));
+        $title = 'ZOE - Catálogo de productos';
+        return view('Productos.productos', compact('title', 'productos'));
     }
 
     public function registro(){
-        return view('Productos.productoregistro');
+        $title = 'ZOE - Nuevo producto';
+        return view('Productos.productoregistro', compact('title'));
     }
 
     public function guardar(Request $request){
@@ -29,12 +31,13 @@ class ProductosController extends Controller
         $guardar->precio = $request->precio;
         $guardar->stock = $request->stock;
         $guardar->save();
-        return redirect('/productos');
+        return redirect()->route('productos');
     }
 
     public function mostrar($producto){
         $producto = Producto::find($producto);
-        return view('Productos.producto', compact('producto'));
+        $title = 'ZOE - '.$producto->nombre;
+        return view('Productos.producto', compact('title', 'producto'));
     }
 
     public function mostrarimagen($id){
@@ -47,7 +50,8 @@ class ProductosController extends Controller
 
     public function modificar($producto){
         $producto = Producto::find($producto);
-        return view('Productos.productomodificar', compact('producto'));
+        $title = 'ZOE - Modificar producto';
+        return view('Productos.productomodificar', compact('title', 'producto'));
     }
 
     public function actualizar(Request $request, $producto){
@@ -64,12 +68,12 @@ class ProductosController extends Controller
         $producto->precio = $request->precio;
         $producto->stock = $request->stock;
         $producto->save();
-        return redirect('/productos/'. $producto->id_productos);
+        return redirect()->route('productos.mostrar', $producto->id_productos);
     }
 
     public function eliminar($producto){
         $producto = Producto::find($producto);
         $producto->delete();
-        return redirect('/productos');
+        return redirect()->route('productos');
     }
 }

@@ -10,11 +10,13 @@ class ClientesController extends Controller
 {
     public function clientes(){
         $clientes = Clientes::all();
-        return view('Clientes.clientes', compact('clientes'));
+        $title = 'ZOE - Lista de clientes';
+        return view('Clientes.clientes', compact('title', 'clientes'));
     }
 
     public function registro(){
-        return view('Clientes.clientesregistro');
+        $title = 'ZOE - Registrarse';
+        return view('Clientes.clientesregistro', compact('title'));
     }
     
     public function guardar(Request $request){
@@ -32,12 +34,14 @@ class ClientesController extends Controller
 
     public function mostrar($cliente){
         $cliente = Clientes::find($cliente);
-        return view('Clientes.cliente', compact('cliente'));
+        $title = 'ZOE - Mi perfil';
+        return view('Clientes.cliente', compact('title', 'cliente'));
     }
 
     public function modificar($cliente){
         $cliente = Clientes::find($cliente);
-        return view('Clientes.clientemodificar', compact('cliente'));
+        $title = 'ZOE - Modificar mis datos';
+        return view('Clientes.clientemodificar', compact('title', 'cliente'));
     }
 
     public function actualizar(Request $request, $cliente){
@@ -52,7 +56,7 @@ class ClientesController extends Controller
             $cliente->contraseña = Hash::make($request->contraseña);
         }
         $cliente->save();
-        return redirect('/clientes/' .$cliente->id_cliente);
+        return redirect()->route('clientes.mostrar', $cliente->id_cliente);
     }
 
     public function eliminar(Request $request, $cliente){

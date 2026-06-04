@@ -14,8 +14,17 @@ class CarritoController extends Controller
         $carrito = Carrito::with('detalles_carrito.producto')
                             ->where('id_cliente', $id_cliente)
                             ->first();
+
+        if($carrito == null){
+            $carrito = Carrito::create([
+                'id_cliente' => $id_cliente,
+                'subtotal' => 0
+            ]);
+        }
+
+        $title = 'ZOE - Mi carrito';
         
-        return view('Carrito.carrito', compact('carrito'));
+        return view('Carrito.carrito', compact('title', 'carrito'));
     }
 
     public function agregar(Request $request)

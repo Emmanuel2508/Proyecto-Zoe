@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Route;
 
 // inicio y autenticación
 Route::get('/', function () {
-    return view('Home');
+    $title = 'ZOE - Inicio';
+    return view('Home', compact('title'));
 })->name('Inicio');
 
 // login clientes

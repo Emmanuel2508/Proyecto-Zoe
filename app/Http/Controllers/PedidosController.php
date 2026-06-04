@@ -26,7 +26,9 @@ class PedidosController extends Controller
                                     ->where('status', 'completado')
                                     ->get();
 
-        return view('Pedidos.pedidos', compact('pedidos_pendientes', 'pedidos_completados'));
+        $title = 'ZOE - Mis pedidos';
+
+        return view('Pedidos.pedidos', compact('title', 'pedidos_pendientes', 'pedidos_completados'));
     }
 
     public function confirmarPedido(Request $request)
